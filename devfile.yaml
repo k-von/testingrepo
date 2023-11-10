@@ -11,7 +11,7 @@ projects:
 components:
   - name: innerloop
     container:
-      image: brandnewbox/cola-ruby26-centos:v7
+      image: ruby:2.6
       cpuRequest: 450m
       memoryRequest: 256M
       command: ['/bin/bash']
