@@ -14,6 +14,7 @@ components:
       image: ruby:2.6
       cpuRequest: 450m
       memoryRequest: 256M
+      dedicatedPod: true
       command: ['/bin/bash']
        
  
