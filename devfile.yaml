@@ -11,7 +11,7 @@ projects:
 components:
   - name: innerloop
     container:
-      image: ruby:2.6
+      image: quay.io/devfile/universal-developer-image:ubi8-latest
       cpuRequest: 450m
       memoryRequest: 256M
       dedicatedPod: true
