@@ -1,10 +1,10 @@
 schemaVersion: 2.1.0
 metadata:
-  name: helloworld-example
-components:
-  - name: dev-tooling
-    container:
-      image: registry.access.redhat.com/ubi8/nodejs-18:latest
-      endpoints:
-        - name: puma-port
-          targetPort: 3000
+  name: sams-dev
+projects:
+  -  name: sams-cola
+     git:
+       remotes: 
+         origin: 'git@github.com:la-county-isd/sams-cola.git'
+       checkoutFrom:
+         revision: production
