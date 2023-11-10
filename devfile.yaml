@@ -11,7 +11,7 @@ projects:
 components:
   - name: innerloop
     container:
-      image: image-registry.openshift-image-registry.svc:5000/sam-dev/cola:latest
+      image: quay.io/centos7/ruby-26-centos7
       command: ['/bin/bash']
 
     
