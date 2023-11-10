@@ -4,7 +4,7 @@ metadata:
 components:
   - name: dev-tooling
     container:
-      image: ruby:2.6
+      image: quay.io/devfile/universal-developer-image:ubi8-latest
       endpoints:
         - name: puma-port
           targetPort: 3000
