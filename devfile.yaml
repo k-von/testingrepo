@@ -11,7 +11,7 @@ projects:
 components:
   - name: innerloop
     container:
-      image: registry.access.redhat.com/ubi8/ruby-30
+      image: kayvon77/get-started:part2
 
     
        
