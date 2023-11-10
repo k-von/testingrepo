@@ -11,7 +11,8 @@ projects:
 components:
   - name: innerloop
     container:
-      image: quay.io/devfile/universal-developer-image:ubi8-latest
+      image: brandnewbox/cola-ruby26-centos
+
     
        
  
