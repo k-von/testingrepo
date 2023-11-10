@@ -12,5 +12,7 @@ components:
   - name: innerloop
     container:
       image: brandnewbox/cola-ruby26-centos:v7
+      command:
+        - /bin/bash
        
  
