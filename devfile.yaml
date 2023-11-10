@@ -4,7 +4,7 @@ metadata:
 components:
   - name: dev-tooling
     container:
-      image: quay.io/devfile/universal-developer-image:ubi8-latest
+      image: registry.access.redhat.com/ubi8/nodejs-18:latest
       endpoints:
         - name: puma-port
           targetPort: 3000
