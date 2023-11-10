@@ -11,16 +11,6 @@ projects:
 components:
   - name: innerloop
     container:
-      image:
-        imageName: sams-cola:latest
-        dockerfile:
-          git:
-            fileLocation: Dockerfile
-            checkoutFrom:
-              revision: 'main'
-              remote: 'origin'
-            remotes:
-              'origin': https://github.com/brandnewbox/cola-s2i
-          buildContext: .
-        
+      image: brandnewbox/cola-ruby26-centos:v7
+       
  
