@@ -11,7 +11,8 @@ projects:
 components:
   - name: innerloop
     container:
-      image: kayvon77/get-started:part2
+      image: image-registry.openshift-image-registry.svc:5000/sam-dev/cola:latest
+      command: ['/bin/bash']
 
     
        
