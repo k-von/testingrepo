@@ -5,6 +5,6 @@ components:
   - name: dev-tooling
     container:
       image: sam-dev/cola:latest
-    endpoints:
-      - name: puma-port
-        targetPort: 3000
+      endpoints:
+        - name: puma-port
+          targetPort: 3000
