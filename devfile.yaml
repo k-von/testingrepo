@@ -4,7 +4,7 @@ metadata:
 components:
   - name: dev-tooling
     container:
-      image: sam-dev/cola:latest
+      image: ruby:2.6
       endpoints:
         - name: puma-port
           targetPort: 3000
