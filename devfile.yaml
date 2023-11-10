@@ -12,9 +12,6 @@ components:
   - name: innerloop
     container:
       image: quay.io/devfile/universal-developer-image:ubi8-latest
-      cpuRequest: 450m
-      memoryRequest: 256M
-      dedicatedPod: true
-      command: ['/bin/bash']
+    
        
  
