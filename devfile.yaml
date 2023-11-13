@@ -12,7 +12,8 @@ components:
   - name: tools
     container:
       # image: registry.redhat.io/devspaces/udi-rhel8:3.9
-      image: registry.redhat.io/rhel8/ruby-31:latest
+      # image: registry.redhat.io/rhel8/ruby-31:latest
+      image: brandnewbox/cola-ruby26-centos:v7
       memoryLimit: '2Gi'
       memoryRequest: '1Gi'
       cpuLimit: '1'
