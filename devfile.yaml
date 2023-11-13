@@ -11,8 +11,7 @@ projects:
 components:
   - name: tools
     container:
-      #image: registry.redhat.io/devspaces/udi-rhel8:3.9
-      image: registry.access.redhat.com/ubi8/s2i-base:latest
+      image: registry.redhat.io/devspaces/udi-rhel8:3.9
       memoryLimit: '2Gi'
       memoryRequest: '1Gi'
       cpuLimit: '1'
