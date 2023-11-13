@@ -35,10 +35,6 @@ RUN cd /tmp/ && \
 # The StaticMaps generator
 RUN pip3 install py-staticmaps
 
-# Copy extra files to the image.
-COPY ./root/ /
-
-
 # A last pass to make sure that an arbitrary user can write in $HOME
 RUN mkdir -p /home/user && chgrp -R 0 /home && chmod -R g=u /home
 
