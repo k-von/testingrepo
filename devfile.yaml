@@ -9,10 +9,25 @@ projects:
        checkoutFrom:
          revision: production
 components:
-  - name: innerloop
+  - name: tools
     container:
-      image: quay.io/centos7/ruby-26-centos7
-      command: ['/bin/bash']
+      image: registry.redhat.io/devspaces/udi-rhel8:3.9
+      memoryLimit: '2Gi'
+      memoryRequest: '1Gi'
+      cpuLimit: '1'
+      cpuRequest: '0.5'
+      mountSources: true
+      endpoints:
+        - exposure: public
+          name: 'hello-endpoint'
+          protocol: http
+          targetPort: 5032
+      volumeMounts:
+        - name: nuget
+          path: /home/user/.nuget
+  - name: nuget
+    volume:
+      size: 1G
 
     
        
