@@ -20,9 +20,8 @@ components:
       mountSources: true
       endpoints:
         - exposure: public
-          name: 'hello-endpoint'
-          protocol: http
-          targetPort: 5032
+          name: 'sams-endpoint'
+          targetPort: 3000
   #    volumeMounts:
   #      - name: nuget
   #        path: /home/user/.nuget
