@@ -1,4 +1,4 @@
-FROM devspace/udi-rhel8:3.9
+FROM devspaces/udi-rhel8:3.9
 
 USER root
 
