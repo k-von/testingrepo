@@ -18,7 +18,7 @@ RUN RUBY_PKGS="ruby-devel rubygem-rake rubygem-bundler" && \
     $NODE_PKGS \
     $IMAGEMAGICK_PKGS \
     $STATIC_MAP_PKGS \
-    $GEOS_PKGS && \
+    $GEOS_PKGS \
     $OTHER_PKGS && \
     dnf autoremove -y && \
     dnf clean all && \
