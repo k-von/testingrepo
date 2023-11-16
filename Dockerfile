@@ -19,6 +19,7 @@ RUN RUBY_PKGS="ruby-devel rubygem-rake rubygem-bundler" && \
     $IMAGEMAGICK_PKGS \
     $STATIC_MAP_PKGS \
     $GEOS_PKGS && \
+    $OTHER_PKGS && \
     dnf autoremove -y && \
     dnf clean all && \
     rm -rf /var/cache/dnf/*
