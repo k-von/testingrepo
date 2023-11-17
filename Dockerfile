@@ -11,6 +11,7 @@ RUN RUBY_PKGS="ruby-devel rubygem-rake rubygem-bundler" && \
     GEOS_PKGS="geos-devel libffi-devel proj-devel" && \
     OTHER_PKGS="libcurl-devel rubygem-mysql2 mariadb-connector-c" && \
     dnf update -y && \
+    dnf module install -y mysql:8.0 && \
     dnf -y --disableplugin=subscription-manager module enable ruby:2.6 && \
     dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm && \
     dnf -y --disableplugin=subscription-manager --setopt=tsflags=nodocs install \
