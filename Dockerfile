@@ -9,7 +9,7 @@ RUN RUBY_PKGS="ruby-devel rubygem-rake rubygem-bundler" && \
     IMAGEMAGICK_PKGS="autoconf libpng-devel libjpeg-devel librsvg2" && \
     STATIC_MAP_PKGS="python3 platform-python-devel python3-cairo" && \
     GEOS_PKGS="geos-devel libffi-devel proj-devel" && \
-    OTHER_PKGS="libcurl-devel rubygem-mysql2" && \
+    OTHER_PKGS="libcurl-devel rubygem-mysql2 mariadb-connector-c" && \
     dnf update -y && \
     dnf -y --disableplugin=subscription-manager module enable ruby:2.6 && \
     dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm && \
