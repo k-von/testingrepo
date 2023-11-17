@@ -10,6 +10,7 @@ RUN RUBY_PKGS="ruby-devel rubygem-rake rubygem-bundler" && \
     STATIC_MAP_PKGS="python3 platform-python-devel python3-cairo" && \
     GEOS_PKGS="geos-devel libffi-devel proj-devel" && \
     OTHER_PKGS="libcurl-devel rubygem-mysql2 mariadb-connector-c" && \
+    microdnf module enable mysql:8.0 && \
     dnf update -y && \
     dnf module install -y mysql:8.0 && \
     dnf -y --disableplugin=subscription-manager module enable ruby:2.6 && \
