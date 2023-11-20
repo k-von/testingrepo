@@ -23,6 +23,8 @@ components:
           name: 'sams-endpoint'
           targetPort: 3000
       env:
+        - name: RAILS_ENV
+          value: development
         - name: DATABASE_URL
           value: mysql2://root:example@db:3306
         - name: MEMCACHED_HOST
