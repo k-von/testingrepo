@@ -22,6 +22,47 @@ components:
         - exposure: public
           name: 'sams-endpoint'
           targetPort: 3000
+      env:
+        - name: DATABASE_URL
+          value: mysql2://root:example@db:3306
+        - name: MEMCACHED_HOST
+          value: memcached
+        - name: ELASTICSEARCH_URL
+          value: http://es:9200
+        - name: REDIS_URL
+          value: redis://redis:6379
+        - name: MAILDEV_HOST
+          value: maildev
+        - name: MINIO_ACCESS_KEY
+          value: minio_development
+        - name: MINIO_SECRET_KEY
+          value: minio_development
+        - name: MINIO_BUCKET
+          value: secure-bucket
+  - name: db
+    container:
+      args:
+        - --default-authentication-plugin=mysql_native_password 
+      image: mysql:8.0
+      memoryLimit: '2Gi'
+      memoryRequest: '1Gi'
+      cpuLimit: '1'
+      cpuRequest: '0.5'
+      mountSources: false
+      dedicatedPod: true
+      env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: example
+        - name: MYSQL_DATABASE
+          value: sams_development
+        - name: MYSQL_USER
+          value: sams
+        - name: MYSQL_PASSWORD
+          value: samspassword
+      endpoints:
+        - name: db
+          targetPort: 3306
+          protocol: tcp
   #    volumeMounts:
   #      - name: nuget
   #        path: /home/user/.nuget
