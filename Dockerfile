@@ -1,4 +1,5 @@
-FROM devspaces/udi-rhel8:3.9
+#FROM devspaces/udi-rhel8:3.9
+FROM registry.access.redhat.com/ubi8/s2i-base:latest
 
 USER root
 
