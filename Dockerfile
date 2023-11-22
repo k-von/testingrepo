@@ -15,6 +15,7 @@ COPY --from=devspaces $REMOTE_SOURCES $REMOTE_SOURCES_DIR
 COPY --from=devspaces /usr/local/bin/docker /usr/local/bin/docker
 COPY --from=devspaces /usr/bin/podman-wrapper.sh /usr/bin/
 COPY --from=devspaces /etc/containers/storage.conf /etc/containers/storage.conf
+COPY --from=devspaces /usr/bin/podman.orig /usr/bin/
 
 RUN RUBY_PKGS="ruby-devel rubygem-rake rubygem-bundler" && \
     NODE_PKGS="nodejs" && \
@@ -87,7 +88,7 @@ RUN \
     (echo '[storage]';echo 'driver = "vfs"') > "${HOME}"/.config/containers/storage.conf && \
     ## Rootless podman install #6: rename podman to allow the execution of 'podman run' using
     ##                             kubedock but 'podman build' using podman.orig
-    mv /usr/bin/podman /usr/bin/podman.orig && \
+    # mv /usr/bin/podman /usr/bin/podman.orig && \
     # set up go/bin folder
     mkdir /home/user/go/bin -p
 
