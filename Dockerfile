@@ -58,7 +58,7 @@ RUN pip3 install py-staticmaps
     echo "export PS1='\W \`git branch --show-current 2>/dev/null | sed -r -e \"s@^(.+)@\(\1\) @\"\`$ '" >> "${HOME}"/.bashrc && \
     # Change permissions to let any arbitrary user
     mkdir -p /projects && \
-    for f in "${HOME}" "/etc/passwd" "/etc/group" "/projects"; do \
+    for f in "${HOME}" "/etc/passwd" "/etc/group" "/projects" "/usr/share/gems"; do \
         echo "Changing permissions on ${f}" && chgrp -R 0 ${f} && \
         chmod -R g+rwX ${f}; \
     done && \
