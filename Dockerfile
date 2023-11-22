@@ -14,7 +14,7 @@ COPY --from=devspaces /entrypoint.sh /entrypoint.sh
 COPY --from=devspaces $REMOTE_SOURCES $REMOTE_SOURCES_DIR
 COPY --from=devspaces /usr/local/bin/docker /usr/local/bin/docker
 COPY --from=devspaces /usr/bin/podman-wrapper.sh /usr/bin/
-
+COPY --from=devspaces /etc/containers/storage.conf /etc/containers/storage.conf
 
 RUN RUBY_PKGS="ruby-devel rubygem-rake rubygem-bundler" && \
     NODE_PKGS="nodejs" && \
