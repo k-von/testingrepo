@@ -69,7 +69,7 @@ commands:
   - id: build
     exec:
       - commandLine: ${PROJECT_SOURCE}/bin/bundle install --path vendor/bundle
-    component: tools
+        component: tools
 
   #    volumeMounts:
   #      - name: nuget
