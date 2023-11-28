@@ -68,7 +68,7 @@ components:
 commands:
   - id: build
     exec:
-      commandLine: ${PROJECT_SOURCE}/bin/bundle install --path vendor/bundle
+      commandLine: ${PROJECT_SOURCE}/bin/bundle install --path vendor/bundle && npm i
       component: tools
 
   #    volumeMounts:
