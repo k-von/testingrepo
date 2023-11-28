@@ -65,6 +65,12 @@ components:
         - name: db
           targetPort: 3306
           protocol: tcp
+commands:
+  - id: build
+    exec:
+      - commandLine: ${PROJECT_SOURCE}/bin/bundle install --path vendor/bundle
+    component: tools
+
   #    volumeMounts:
   #      - name: nuget
   #        path: /home/user/.nuget
