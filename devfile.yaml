@@ -70,6 +70,9 @@ commands:
     exec:
       commandLine: ${PROJECT_SOURCE}/bin/bundle install --path vendor/bundle && npm i
       component: tools
+      group:
+        kind: build
+        isDefault: true
 
   #    volumeMounts:
   #      - name: nuget
