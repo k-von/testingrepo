@@ -1,6 +1,8 @@
 schemaVersion: 2.1.0
 metadata:
   name: sams-dev
+variables:
+  DEVWORKSPACE_ID: ${DEVWORKSPACE_ID}
 projects:
   -  name: sams-cola
      git:
@@ -26,7 +28,7 @@ components:
         - name: RAILS_ENV
           value: development
         - name: DATABASE_URL
-          value: mysql2://root:example@$(DEVWORKSPACE_ID):3306
+          value: mysql2://root:example@{{DEVWORKSPACE_ID}}:3306
         - name: MEMCACHED_HOST
           value: memcached
         - name: ELASTICSEARCH_URL
