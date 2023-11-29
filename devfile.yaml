@@ -90,9 +90,9 @@ commands:
       group:
         kind: run
         isDefault: true
-events:
-  preStart:
-    - db
+# events:
+#   preStart:
+#     - db
 
   #    volumeMounts:
   #      - name: nuget
