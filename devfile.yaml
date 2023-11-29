@@ -65,6 +65,7 @@ components:
         - name: db
           targetPort: 3306
           protocol: tcp
+          exposure: internal
 commands:
   - id: build
     exec:
