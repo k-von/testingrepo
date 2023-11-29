@@ -92,7 +92,7 @@ commands:
         isDefault: true
 events:
   preStart:
-    - apply
+    - db
 
   #    volumeMounts:
   #      - name: nuget
