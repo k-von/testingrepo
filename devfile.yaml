@@ -84,6 +84,12 @@ commands:
       group:
         kind: build
         isDefault: true
+  - id: db
+    apply:
+      component: db
+      group:
+        kind: run
+        isDefault: true
 
   #    volumeMounts:
   #      - name: nuget
