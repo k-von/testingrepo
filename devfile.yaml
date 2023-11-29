@@ -26,7 +26,7 @@ components:
         - name: RAILS_ENV
           value: development
         - name: PROJECTROOT
-          value: ${PROJECT_ROOT}
+          value: ${PROJECTS_ROOT}
         - name: DATABASE_URL
           value: mysql2://root:example@db:3306
         - name: MEMCACHED_HOST
