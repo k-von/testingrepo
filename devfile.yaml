@@ -26,7 +26,7 @@ components:
         - name: RAILS_ENV
           value: development
         - name: DATABASE_URL
-          value: mysql2://root:example@db:3306
+          value: "mysql2://root:example@${DEVWORKSPACE_ID}:3306"
         - name: MEMCACHED_HOST
           value: memcached
         - name: ELASTICSEARCH_URL
