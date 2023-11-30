@@ -69,7 +69,7 @@ components:
   #         protocol: tcp
   #         exposure: internal
   - name: db
-    kubernetes:
+    openshift:
       endpoints:
         - exposure: internal
           name: db
@@ -156,9 +156,8 @@ commands:
       group:
         kind: run
         isDefault: true
-# events:
-#   preStart:
-#     - db
+events:
+  preStart: [ db ]
 
   #    volumeMounts:
   #      - name: nuget
