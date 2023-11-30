@@ -8,15 +8,15 @@ ENV \
 
 USER root
 
-# EXPOSE 3000
+EXPOSE 3000
 
-# COPY --from=devspaces $HOME/.config/containers/storage.conf $HOME/.config/containers/storage.conf
-# COPY --from=devspaces /entrypoint.sh /entrypoint.sh
-# COPY --from=devspaces $REMOTE_SOURCES $REMOTE_SOURCES_DIR
-# COPY --from=devspaces /usr/local/bin/docker /usr/local/bin/docker
-# COPY --from=devspaces /usr/bin/podman-wrapper.sh /usr/bin/
-# COPY --from=devspaces /etc/containers/storage.conf /etc/containers/storage.conf
-# COPY --from=devspaces /usr/bin/podman.orig /usr/bin/
+COPY --from=devspaces $HOME/.config/containers/storage.conf $HOME/.config/containers/storage.conf
+COPY --from=devspaces /entrypoint.sh /entrypoint.sh
+COPY --from=devspaces $REMOTE_SOURCES $REMOTE_SOURCES_DIR
+COPY --from=devspaces /usr/local/bin/docker /usr/local/bin/docker
+COPY --from=devspaces /usr/bin/podman-wrapper.sh /usr/bin/
+COPY --from=devspaces /etc/containers/storage.conf /etc/containers/storage.conf
+COPY --from=devspaces /usr/bin/podman.orig /usr/bin/
 
 RUN RUBY_PKGS="ruby-devel rubygem-rake rubygem-bundler" && \
     NODE_PKGS="nodejs" && \
