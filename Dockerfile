@@ -26,7 +26,6 @@ RUN RUBY_PKGS="ruby-devel rubygem-rake rubygem-bundler" && \
     OTHER_PKGS="libcurl-devel rubygem-mysql2 mariadb-connector-c mariadb-connector-c-devel rubygem-psych libyaml-devel" && \
     dnf update -y && \
     dnf -y --disableplugin=subscription-manager module enable ruby:2.6 && \
-    dnf -y --disableplugin=subscription-manager module enable ruby:3.1 && \
     dnf -y --disableplugin=subscription-manager module enable container-tools && \
     dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm && \
     dnf -y --disableplugin=subscription-manager --setopt=tsflags=nodocs install \
@@ -39,6 +38,8 @@ RUN RUBY_PKGS="ruby-devel rubygem-rake rubygem-bundler" && \
     dnf autoremove -y && \
     dnf clean all && \
     rm -rf /var/cache/dnf/*
+
+RUN curl -sSL https://get.rvm.io | sudo bash -s stable --ruby
 
 # Compile ImageMagick 6 from source.
 RUN cd /tmp/ && \
