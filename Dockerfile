@@ -58,7 +58,15 @@ RUN cd /tmp/ && \
 # The StaticMaps generator
 RUN pip3 install py-staticmaps
 
-
+RUN cat - <<EOF > /etc/containers/policy.json
+{
+    "default": [
+        {
+            "type": "insecureAcceptAnything"
+        }
+    ]
+}
+EOF
 
  # add user and configure it
  RUN useradd -u 1000 -G wheel,root,rvm -d /home/user --shell /bin/bash -m user && \
