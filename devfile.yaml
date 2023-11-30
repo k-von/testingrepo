@@ -69,7 +69,7 @@ components:
   #         protocol: tcp
   #         exposure: internal
   - name: db
-    openshift:
+    kubernetes:
       endpoints:
         - exposure: internal
           name: db
