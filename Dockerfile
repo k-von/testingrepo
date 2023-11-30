@@ -26,6 +26,8 @@ RUN RUBY_PKGS="ruby-devel rubygem-rake rubygem-bundler" && \
     OTHER_PKGS="libcurl-devel rubygem-mysql2 mariadb-connector-c mariadb-connector-c-devel rubygem-psych libyaml-devel" && \
     dnf update -y && \
     dnf -y --disableplugin=subscription-manager module enable ruby:2.6 && \
+    dnf -y --disableplugin=subscription-manager module enable ruby:3.1 && \
+    dnf -y --disableplugin=subscription-manager module enable container-tools && \
     dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm && \
     dnf -y --disableplugin=subscription-manager --setopt=tsflags=nodocs install \
     $RUBY_PKGS \
