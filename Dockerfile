@@ -44,8 +44,8 @@ RUN gem install rvm && \
     curl -sSL https://get.rvm.io | sudo bash -s stable && \
     source /etc/profile.d/rvm.sh && \
     echo "rvm mount command running..." && \
-    /usr/local/rvm/bin/rvm mount -r https://rvm.io/binaries/centos/8/x86_64/ruby-3.1.3.tar.bz2 && \
-    /usr/local/rvm/bin/rvm alias create default ruby-3.1.3
+    /usr/local/rvm/bin/rvm mount -r https://rvm.io/binaries/centos/8/x86_64/ruby-3.1.3.tar.bz2 # && \
+    # /usr/local/rvm/bin/rvm alias create default ruby-3.1.3
 
 # Compile ImageMagick 6 from source.
 RUN cd /tmp/ && \
