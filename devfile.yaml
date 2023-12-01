@@ -162,7 +162,7 @@ commands:
       group:
         kind: build
       label: Building dev-tools related gems
-      wokrDir: ${PROJECT_ROOT}/sams-cola/dev-tools
+      workDir: ${PROJECT_ROOT}/sams-cola/dev-tools
 
 
 events:
