@@ -10,13 +10,13 @@ USER root
 
 EXPOSE 3000
 
-COPY --from=devspaces $HOME/.config/containers/storage.conf $HOME/.config/containers/storage.conf
+# COPY --from=devspaces $HOME/.config/containers/storage.conf $HOME/.config/containers/storage.conf
 COPY --from=devspaces /entrypoint.sh /entrypoint.sh
-COPY --from=devspaces $REMOTE_SOURCES $REMOTE_SOURCES_DIR
-COPY --from=devspaces /usr/local/bin/docker /usr/local/bin/docker
-COPY --from=devspaces /usr/bin/podman-wrapper.sh /usr/bin/
+# COPY --from=devspaces $REMOTE_SOURCES $REMOTE_SOURCES_DIR
+# COPY --from=devspaces /usr/local/bin/docker /usr/local/bin/docker
+# COPY --from=devspaces /usr/bin/podman-wrapper.sh /usr/bin/
 COPY --from=devspaces /etc/containers /etc/containers/
-COPY --from=devspaces /usr/bin/podman.orig /usr/bin/
+# COPY --from=devspaces /usr/bin/podman.orig /usr/bin/
 
 RUN RUBY_PKGS="ruby-devel rubygem-rake rubygem-bundler" && \
     NODE_PKGS="nodejs" && \
@@ -79,27 +79,27 @@ RUN pip3 install py-staticmaps
     sed s#root:x:0:#root:x:0:0,\${USER_ID}:#g \
     > ${HOME}/group.template
 
-RUN \
-    ## Rootless podman install #2: install podman buildah skopeo e2fsprogs (above)
-    ## Rootless podman install #3: tweaks to make rootless buildah work
-    touch /etc/subgid /etc/subuid  && \
-    chmod g=u /etc/subgid /etc/subuid /etc/passwd  && \
-    echo user:10000:65536 > /etc/subuid  && \
-    echo user:10000:65536 > /etc/subgid && \
-    ## Rootless podman install #4: adjust storage.conf to enable Fuse storage.
-    sed -i -e 's|^#mount_program|mount_program|g' -e '/additionalimage.*/a "/var/lib/shared",' /etc/containers/storage.conf && \
-    mkdir -p /var/lib/shared/overlay-images /var/lib/shared/overlay-layers; \
-    touch /var/lib/shared/overlay-images/images.lock; \
-    touch /var/lib/shared/overlay-layers/layers.lock && \
-    ## Rootless podman install #5: but use VFS since we were not able to make Fuse work yet...
-    # TODO switch this to fuse in OCP 4.12?
-    mkdir -p "${HOME}"/.config/containers && \
-    (echo '[storage]';echo 'driver = "vfs"') > "${HOME}"/.config/containers/storage.conf && \
-    ## Rootless podman install #6: rename podman to allow the execution of 'podman run' using
-    ##                             kubedock but 'podman build' using podman.orig
-    # mv /usr/bin/podman /usr/bin/podman.orig && \
-    # set up go/bin folder
-    mkdir /home/user/go/bin -p
+# RUN \
+#     ## Rootless podman install #2: install podman buildah skopeo e2fsprogs (above)
+#     ## Rootless podman install #3: tweaks to make rootless buildah work
+#     touch /etc/subgid /etc/subuid  && \
+#     chmod g=u /etc/subgid /etc/subuid /etc/passwd  && \
+#     echo user:10000:65536 > /etc/subuid  && \
+#     echo user:10000:65536 > /etc/subgid && \
+#     ## Rootless podman install #4: adjust storage.conf to enable Fuse storage.
+#     sed -i -e 's|^#mount_program|mount_program|g' -e '/additionalimage.*/a "/var/lib/shared",' /etc/containers/storage.conf && \
+#     mkdir -p /var/lib/shared/overlay-images /var/lib/shared/overlay-layers; \
+#     touch /var/lib/shared/overlay-images/images.lock; \
+#     touch /var/lib/shared/overlay-layers/layers.lock && \
+#     ## Rootless podman install #5: but use VFS since we were not able to make Fuse work yet...
+#     # TODO switch this to fuse in OCP 4.12?
+#     mkdir -p "${HOME}"/.config/containers && \
+#     (echo '[storage]';echo 'driver = "vfs"') > "${HOME}"/.config/containers/storage.conf && \
+#     ## Rootless podman install #6: rename podman to allow the execution of 'podman run' using
+#     ##                             kubedock but 'podman build' using podman.orig
+#     # mv /usr/bin/podman /usr/bin/podman.orig && \
+#     # set up go/bin folder
+#     mkdir /home/user/go/bin -p
 
 # A last pass to make sure that an arbitrary user can write in $HOME
 RUN mkdir -p /home/user && chgrp -R 0 /home && chmod -R g=u /home
