@@ -48,21 +48,13 @@ RUN gem install rvm && \
     /usr/local/rvm/bin/rvm mount -r https://rvm.io/binaries/centos/8/x86_64/ruby-2.6.10.tar.bz2
     # /usr/local/rvm/bin/rvm alias create default ruby-3.1.3
 
-# Compile ImageMagick 6 from source.
-RUN cd /tmp/ && \
-    wget https://imagemagick.org/archive/releases/ImageMagick-6.9.12-89.tar.xz && \
-    tar -xf ImageMagick-6.9.12-89.tar.xz && \
-    cd ImageMagick-6.9.12-89 && \
-    ./configure --prefix=/usr --disable-docs && \
-    make install && \
-    cd $WORKDIR && \
-    rm -rvf /tmp/ImageMagick*
+
 
 # The StaticMaps generator
 RUN pip3 install py-staticmaps
 
  # add user and configure it
- RUN useradd -u 1000 -G wheel,root,rvm -d /home/user --shell /bin/bash -m user && \
+RUN useradd -u 1000 -G wheel,root,rvm -d /home/user --shell /bin/bash -m user && \
     # Setup $PS1 for a consistent and reasonable prompt
     echo "export PS1='\W \`git branch --show-current 2>/dev/null | sed -r -e \"s@^(.+)@\(\1\) @\"\`$ '" >> "${HOME}"/.bashrc && \
     # Change permissions to let any arbitrary user
@@ -79,6 +71,15 @@ RUN pip3 install py-staticmaps
     sed s#root:x:0:#root:x:0:0,\${USER_ID}:#g \
     > ${HOME}/group.template
 
+# Compile ImageMagick 6 from source.
+RUN cd /tmp/ && \
+    wget https://imagemagick.org/archive/releases/ImageMagick-6.9.12-89.tar.xz && \
+    tar -xf ImageMagick-6.9.12-89.tar.xz && \
+    cd ImageMagick-6.9.12-89 && \
+    ./configure --prefix=/usr --disable-docs && \
+    make install && \
+    cd $WORKDIR && \
+    rm -rvf /tmp/ImageMagick*
 # RUN \
 #     ## Rootless podman install #2: install podman buildah skopeo e2fsprogs (above)
 #     ## Rootless podman install #3: tweaks to make rootless buildah work
