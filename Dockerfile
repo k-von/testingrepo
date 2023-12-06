@@ -46,9 +46,7 @@ RUN gem install rvm && \
     echo "rvm mount command running..." && \
     /usr/local/rvm/bin/rvm mount -r https://rvm.io/binaries/centos/8/x86_64/ruby-3.1.3.tar.bz2 && \
     /usr/local/rvm/bin/rvm mount -r https://rvm.io/binaries/centos/8/x86_64/ruby-2.6.10.tar.bz2 && \
-    /usr/local/rvm/bin/rvm use 2.6.10 && \
-    gem install debug && \
-    /usr/local/rvm/bin/rvm use 3.1.3 && \
+    /bin/bash --login -c /usr/local/rvm/bin/rvm use 3.1.3 && \
     gem install debug && \
     /usr/local/rvm/bin/rvm use systeam
     
