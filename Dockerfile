@@ -1,4 +1,4 @@
-FROM devspaces/udi-rhel8:3.9 as devspaces
+FROM registry.redhat.io/devspaces/udi-rhel8:3.9 as devspaces
 
 # FROM registry.access.redhat.com/ubi8/s2i-base:latest
 FROM docker.io/brandnewbox/cola-ruby26-centos:v7
@@ -9,6 +9,8 @@ ENV \
 USER root
 
 EXPOSE 3000
+
+SHELL ["/bin/sh","--login","-c"]
 
 # COPY --from=devspaces $HOME/.config/containers/storage.conf $HOME/.config/containers/storage.conf
 COPY --from=devspaces /entrypoint.sh /entrypoint.sh
@@ -41,11 +43,10 @@ RUN RUBY_PKGS="ruby-devel rubygem-rake rubygem-bundler" && \
 
 RUN gem install rvm && \
     sudo gpg2 --keyserver hkp://keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB && \ 
-    curl -sSL https://get.rvm.io | sudo bash -s stable && \
-    source /etc/profile.d/rvm.sh && \
-    echo "rvm mount command running..." && \
-    /usr/local/rvm/bin/rvm mount -r https://rvm.io/binaries/centos/8/x86_64/ruby-3.1.3.tar.bz2 && \
-    /usr/local/rvm/bin/rvm mount -r https://rvm.io/binaries/centos/8/x86_64/ruby-2.6.10.tar.bz2 && \
+    curl -sSL https://get.rvm.io | sudo bash -s stable
+
+RUN export PATH=$PATH:/usr/local/rvm/bin/ && env && rvm mount -r https://rvm.io/binaries/centos/8/x86_64/ruby-3.1.3.tar.bz2 && \
+    rvm mount -r https://rvm.io/binaries/centos/8/x86_64/ruby-2.6.10.tar.bz2 && \
     /bin/bash --login -c 'rvm use 3.1.3 && gem install debug'
     
 # The StaticMaps generator
