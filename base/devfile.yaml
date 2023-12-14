@@ -4,14 +4,13 @@ metadata:
 components:
   - name: tools
     container:
-      image: brandnewbox/s2i-sams:3.1
+      image: quay.io/kayvon77/ruby-dev:1.0
       endpoints:
         - exposure: public
           name: 'webserver'
           targetPort: 3000
       command:
         - /bin/bash
-
 
     
        
