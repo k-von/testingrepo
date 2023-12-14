@@ -9,8 +9,6 @@ components:
         - exposure: public
           name: 'webserver'
           targetPort: 3000
-      command:
-        - /bin/bash
 
     
        
