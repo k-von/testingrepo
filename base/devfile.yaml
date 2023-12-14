@@ -1,6 +1,6 @@
 schemaVersion: 2.1.0
 metadata:
-  name: sams-dev
+  name: ruby-dev
 components:
   - name: tools
     container:
