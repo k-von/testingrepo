@@ -4,7 +4,7 @@ metadata:
 components:
   - name: tools
     container:
-      image: quay.io/kayvon77/ruby-dev:1.0
+      image: quay.io/kayvon77/ruby-dev:ruby-3.1
       endpoints:
         - exposure: public
           name: 'webserver'
