@@ -94,9 +94,9 @@ commands:
       
       component: app-server
       group:
-        kind: build
-      label: Building dev-tools related gems
-      workingDir: ${PROJECTS_ROOT}/sams-cola/dev-tools
+        kind: run
+      label: Run delayed_jobs server for SAMS
+      workingDir: ${PROJECTS_ROOT}/sams-cola
 
 
     
