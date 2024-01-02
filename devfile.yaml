@@ -83,6 +83,11 @@ components:
           value: false
         - name: discovery.type
           value: single-node
+       endpoints:
+        - name: es
+          targetPort: 9200
+          protocol: tcp
+          exposure: internal
   - name: db
     container:
       args:
