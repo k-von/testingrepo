@@ -83,7 +83,7 @@ components:
           value: false
         - name: discovery.type
           value: single-node
-       endpoints:
+      endpoints:
         - name: es
           targetPort: 9200
           protocol: tcp
