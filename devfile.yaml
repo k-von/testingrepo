@@ -70,7 +70,7 @@ components:
           exposure: internal
 events:
   postStart:
-    -  build
+    - build
 commands:
   - id: build
     exec:
