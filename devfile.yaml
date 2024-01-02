@@ -52,8 +52,9 @@ components:
      # cpuRequest: '0.5'
       mountSources: false
       command:
-        - server
+        - minio 
       args:
+        - server
         - /data/disk0
       endpoints:
         - exposure: internal
