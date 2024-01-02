@@ -72,10 +72,6 @@ events:
   postStart:
     - justtesting
 commands:
-  - id: justtesting
-    exec:
-      commandLine: "echo "This is just a test"
-      component: app-server
   - id: build
     exec:
       commandLine: /bin/bash --login -c 'rvm use system && ${PROJECT_SOURCE}/bin/bundle install --path vendor/bundle && npm i'
