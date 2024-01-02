@@ -73,7 +73,7 @@ components:
         - name: MINIO_BUCKET
           value: secure-bucket
       command:
-        - ${PROJECT_SOURCE}/bundle
+        - /projects/sams-cola/bundle
       args:
         - exec
         - rake
