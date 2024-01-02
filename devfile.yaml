@@ -43,6 +43,37 @@ components:
           value: minio_development
         - name: MINIO_BUCKET
           value: secure-bucket
+  - name: minio
+    container:
+      image: minio/minio:RELEASE.2019-05-14T23-57-45Z
+     # memoryLimit: '2Gi'
+     # memoryRequest: '1Gi'
+     # cpuLimit: '1'
+     # cpuRequest: '0.5'
+      mountSources: false
+      command:
+        - server
+      args:
+        - /data/disk0
+      endpoints:
+        - exposure: internal
+          name: minio
+          targetPort: 9000
+      env:
+        - name: CONFD_BACKEND
+          value: env
+        - name: CONFD_PREFIX_KEY
+          value: /minio
+        - name: MINIO_ACCESS_KEY
+          value: minio_development
+        - name: MINIO_SECRET_KEY
+          value: minio_development
+        - name: MINIO_DISKS_0
+          value: disk0
+        - name: MINIO_REGION
+          value: us-east-1
+        - name: MINIO_BUCKET
+          value: secure-bucket
   - name: db
     container:
       args:
