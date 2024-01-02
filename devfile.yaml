@@ -75,6 +75,14 @@ components:
           value: us-east-1
         - name: MINIO_BUCKET
           value: secure-bucket
+  - name: es
+    container:
+      image: registry.redhat.io/elastic/enterprise-search:7.16.2
+      env:
+        - name: xpack.security.enabled
+          value: false
+        - name: discovery.type
+          value: single-node
   - name: db
     container:
       args:
