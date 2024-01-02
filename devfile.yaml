@@ -43,7 +43,7 @@ components:
           value: minio_development
         - name: MINIO_BUCKET
           value: secure-bucket
-  - name: delayed_jobs
+  - name: delayed-jobs
     container:
       image: quay.io/kayvon77/ruby-dev:1.0
       memoryLimit: '2Gi'
