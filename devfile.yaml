@@ -9,7 +9,7 @@ projects:
        checkoutFrom:
          revision: main
 components:
-  - name: tools
+  - name: app-server
     container:
       #image: registry.redhat.io/devspaces/udi-rhel8:3.9
       image: quay.io/kayvon77/ruby-dev:1.0
@@ -43,6 +43,41 @@ components:
           value: minio_development
         - name: MINIO_BUCKET
           value: secure-bucket
+  - name: delayed_jobs
+    container:
+      image: quay.io/kayvon77/ruby-dev:1.0
+      memoryLimit: '2Gi'
+      memoryRequest: '1Gi'
+      cpuLimit: '1'
+      cpuRequest: '0.5'
+      mountSources: true
+      env:
+        - name: RAILS_ENV
+          value: development
+        - name: PROJECTROOT
+          value: $(PROJECTS_ROOT)
+        - name: DATABASE_URL
+          value: mysql2://root:example@db:3306
+        - name: MEMCACHED_HOST
+          value: memcached
+        - name: ELASTICSEARCH_URL
+          value: http://es:9200
+        - name: REDIS_URL
+          value: redis://redis:6379
+        - name: MAILDEV_HOST
+          value: maildev
+        - name: MINIO_ACCESS_KEY
+          value: minio_development
+        - name: MINIO_SECRET_KEY
+          value: minio_development
+        - name: MINIO_BUCKET
+          value: secure-bucket
+      command:
+        - ${PROJECT_SOURCE}/bundle
+      args:
+        - exec
+        - rake
+        - jobs:work
   - name: db
     container:
       args:
