@@ -133,14 +133,6 @@ commands:
     exec:
       commandLine: /bin/bash -c 'echo "Just Testing"'
       component: app-server
-  - id: createbucket
-    exec:
-      commandLine: |
-        curl https://dl.min.io/client/mc/release/linux-amd64/mc 
-        
-      component: app-server
-      label: Create Minio Bucket
-      workingDir: $HOME
   - id: build
     exec:
       commandLine: /bin/bash --login -c 'rvm use system && ${PROJECT_SOURCE}/bin/bundle install --path vendor/bundle && npm i'
