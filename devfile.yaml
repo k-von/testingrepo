@@ -77,7 +77,7 @@ components:
           value: secure-bucket
   - name: es
     container:
-      image: registry.redhat.io/elastic/enterprise-search:7.16.2
+      image: registry.connect.redhat.com/elastic/enterprise-search:7.16.2
       env:
         - name: xpack.security.enabled
           value: 'false'
