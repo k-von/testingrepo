@@ -125,9 +125,7 @@ components:
           targetPort: 3306
           protocol: tcp
           exposure: internal
-events:
-  postStart:
-    - createbucket
+
 commands:
   - id: justtesting
     exec:
