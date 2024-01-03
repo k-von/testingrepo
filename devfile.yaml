@@ -127,12 +127,21 @@ components:
           exposure: internal
 events:
   postStart:
-    - justtesting
+    - createbuckets
 commands:
   - id: justtesting
     exec:
       commandLine: /bin/bash -c 'echo "Just Testing"'
       component: app-server
+  - id: createbucket
+    exec:
+      commandLine: |
+        curl https://dl.min.io/client/mc/release/linux-amd64/mc \
+        --create-dirs \
+        -o $HOME/minio-binaries/mc
+      component: app-server
+      label: Create Minio Bucket
+      workingDir: $HOME
   - id: build
     exec:
       commandLine: /bin/bash --login -c 'rvm use system && ${PROJECT_SOURCE}/bin/bundle install --path vendor/bundle && npm i'
