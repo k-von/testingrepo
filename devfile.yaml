@@ -79,11 +79,11 @@ components:
     container:
       image: quay.io/minio/mc
       command:
-        - /bin/sh
+        - "/bin/sh"
       args:
-        - -c
+        - "-c"
         - "/usr/bin/mc alias set myminio http://127.0.0.1:9000 minio_development minio_development;/usr/bin/mc mb myminio/secure-bucket;exit 0;"
-  name: es
+  - name: es
     container:
       image: docker.elastic.co/elasticsearch/elasticsearch:7.16.2
       memoryLimit: '2Gi'
