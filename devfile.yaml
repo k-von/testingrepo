@@ -83,10 +83,18 @@ components:
       cpuLimit: '1'
       cpuRequest: '0.5'
       env:
-        - name: xpack.security.enabled
+        - name: ES_XPACK_SECURITY_ENABLED
           value: 'false'
         - name: discovery.type
           value: single-node
+        - name: ES_BOOTSTRAP_MEMORY_LOCK
+          value: 'false'
+        - name: ES_JAVA_OPTS
+          value: '-Xms512m -Xmx512m -Dlog4j2.formatMsgNoLookups=true'
+        - name: ES_PATH_DATA
+          value: /usr/share/elasticsearch/data
+        - name: ES_PATH_LOGS
+          value: /usr/share/elasticsearch/logs
       endpoints:
         - name: es
           targetPort: 9200
