@@ -77,7 +77,7 @@ components:
           value: secure-bucket
   - name: es
     container:
-      image: registry.connect.redhat.com/elastic/enterprise-search:7.16.2
+      image: docker.elastic.co/elasticsearch/elasticsearch:7.16.2
       memoryLimit: '2Gi'
       memoryRequest: '1Gi'
       cpuLimit: '1'
