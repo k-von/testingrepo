@@ -37,9 +37,9 @@ components:
           value: redis://redis:6379
         - name: MAILDEV_HOST
           value: maildev
-        - name: MINIO_ACCESS_KEY
+        - name: MINIO_ACCESS_KEY_ID
           value: minio_development
-        - name: MINIO_SECRET_KEY
+        - name: MINIO_SECRET_ACCESS_KEY
           value: minio_development
         - name: MINIO_BUCKET
           value: secure-bucket
@@ -65,9 +65,9 @@ components:
           value: env
         - name: CONFD_PREFIX_KEY
           value: /minio
-        - name: MINIO_ACCESS_KEY
+        - name: MINIO_ACCESS_KEY_ID
           value: minio_development
-        - name: MINIO_SECRET_KEY
+        - name: MINIO_SECRET_ACCESS_KEY
           value: minio_development
         - name: MINIO_DISKS_0
           value: disk0
