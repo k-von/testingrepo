@@ -140,6 +140,10 @@ commands:
         --create-dirs \
         -o $HOME/minio-binaries/mc
         curl https://dl.min.io/client/mc/release/linux-amd64/mc 
+        chmod +x $HOME/minio-binaries/mc
+        export PATH=$PATH:$HOME/minio-binaries/
+        mc alias set myminio http://minio:9000 minio_development minio_development
+        mc mb myminio/secure-bucket
         
       component: app-server
       label: Create Minio Bucket
