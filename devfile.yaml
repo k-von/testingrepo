@@ -138,13 +138,11 @@ commands:
       commandLine: |
         curl https://dl.min.io/client/mc/release/linux-amd64/mc \
         --create-dirs \
-        -o /tmp/minio-binaries/mc 2>&1 | tee -a /tmp/postStart.log && \
-        chmod --verbose +x /tmp/minio-binaries/mc | tee -a /tmp/postStart.log && \
+        -o /tmp/minio-binaries/mc && \
+        chmod +x /tmp/minio-binaries/mc && \
         export PATH=$PATH:/tmp/minio-binaries/ && \
-        (echo "Waiting for 10" && \
-        sleep 10) | tee -a /tmp/postStart.log && \
-        mc alias set myminio http://127.0.0.1:9000 minio_development minio_development 2>&1 | tee -a /tmp/postStart.log && \
-        mc mb myminio/secure-bucket | tee -a /tmp/postStart.log
+        mc alias set myminio http://127.0.0.1:9000 minio_development minio_development && \
+        mc mb myminio/secure-bucket 
 
       component: minio
       label: Create Minio Bucket
