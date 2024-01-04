@@ -5,6 +5,10 @@ components:
   - name: tools
     container:
       image: quay.io/kayvon77/ruby-dev:ruby-3.1
+      memoryLimit: "2Gi"
+      memoryRequest: "1Gi"
+      cpuLimit: "1"
+      cpuRequest: "0.5"
       endpoints:
         - exposure: public
           name: 'webserver'
