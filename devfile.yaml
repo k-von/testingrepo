@@ -139,7 +139,7 @@ commands:
         curl https://dl.min.io/client/mc/release/linux-amd64/mc \
         --create-dirs \
         -o $HOME/minio-binaries/mc | tee -a $HOME/postStart.log && \
-        chmod +x $HOME/minio-binaries/mc && \
+        chmod --verbose +x $HOME/minio-binaries/mc | tee -a $HOME/postStart.log && \
         export PATH=$PATH:$HOME/minio-binaries/ && \
         mc alias set myminio http://127.0.0.1:9000 minio_development minio_development && \
         mc mb myminio/secure-bucket | tee -a $HOME/postStart.log
