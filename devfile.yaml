@@ -138,17 +138,17 @@ commands:
       commandLine: |
         curl https://dl.min.io/client/mc/release/linux-amd64/mc \
         --create-dirs \
-        -o $HOME/minio-binaries/mc 2>&1 | tee -a $HOME/postStart.log && \
-        chmod --verbose +x $HOME/minio-binaries/mc | tee -a $HOME/postStart.log && \
-        export PATH=$PATH:$HOME/minio-binaries/ && \
+        -o /tmp/minio-binaries/mc 2>&1 | tee -a /tmp/postStart.log && \
+        chmod --verbose +x /tmp/minio-binaries/mc | tee -a /tmp/postStart.log && \
+        export PATH=$PATH:/tmp/minio-binaries/ && \
         (echo "Waiting for 10" && \
-        sleep 10) | tee -a $HOME/postStart.log && \
-        mc alias set myminio http://127.0.0.1:9000 minio_development minio_development 2>&1 | tee -a $HOME/postStart.log && \
-        mc mb myminio/secure-bucket | tee -a $HOME/postStart.log
+        sleep 10) | tee -a /tmp/postStart.log && \
+        mc alias set myminio http://127.0.0.1:9000 minio_development minio_development 2>&1 | tee -a /tmp/postStart.log && \
+        mc mb myminio/secure-bucket | tee -a /tmp/postStart.log
 
-      component: app-server
+      component: minio
       label: Create Minio Bucket
-      workingDir: $HOME
+      workingDir: /tmp
   - id: build
     exec:
       commandLine: /bin/bash --login -c 'rvm use system && ${PROJECT_SOURCE}/bin/bundle install --path vendor/bundle && npm i'
