@@ -142,7 +142,7 @@ commands:
         chmod +x /tmp/minio-binaries/mc && \
         export PATH=$PATH:/tmp/minio-binaries/ && \
         mc alias set myminio http://127.0.0.1:9000 minio_development minio_development && \
-        mc mb myminio/secure-bucket 
+        mc mb myminio/secure-bucket
 
       component: minio
       label: Create Minio Bucket
