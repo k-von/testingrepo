@@ -136,13 +136,13 @@ commands:
   - id: createbucket
     exec:
       commandLine: |
-        (curl https://dl.min.io/client/mc/release/linux-amd64/mc \
+        curl https://dl.min.io/client/mc/release/linux-amd64/mc \
         --create-dirs \
         -o $HOME/minio-binaries/mc && \
         chmod +x $HOME/minio-binaries/mc && \
         export PATH=$PATH:$HOME/minio-binaries/ && \
         mc alias set myminio http://127.0.0.1:9000 minio_development minio_development && \
-        mc mb myminio/secure-bucket) | tee $HOME/postStart.log
+        mc mb myminio/secure-bucket | tee -a $HOME/postStart.log
 
       component: app-server
       label: Create Minio Bucket
