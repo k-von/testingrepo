@@ -141,6 +141,8 @@ commands:
         -o $HOME/minio-binaries/mc 2>&1 | tee -a $HOME/postStart.log && \
         chmod --verbose +x $HOME/minio-binaries/mc | tee -a $HOME/postStart.log && \
         export PATH=$PATH:$HOME/minio-binaries/ && \
+        echo "Waiting for 10" && \
+        sleep 10 && \
         mc alias set myminio http://127.0.0.1:9000 minio_development minio_development 2>&1 | tee -a $HOME/postStart.log && \
         mc mb myminio/secure-bucket | tee -a $HOME/postStart.log
 
