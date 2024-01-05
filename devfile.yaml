@@ -134,7 +134,7 @@ commands:
   - id: createbucket
     exec:
       commandLine: |
-        curl https://dl.min.io/client/mc/release/linux-amd64/mc \
+        curl -k https://dl.min.io/client/mc/release/linux-amd64/mc \
         --create-dirs \
         -o /tmp/minio-binaries/mc && \
         chmod +x /tmp/minio-binaries/mc && \
