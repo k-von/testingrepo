@@ -128,8 +128,8 @@ components:
           protocol: tcp
           exposure: internal
 events:
-  postStart: 
-    - createbucket
+  postStart: []
+    
 commands:
   - id: createbucket
     exec:
