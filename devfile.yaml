@@ -65,9 +65,9 @@ components:
           value: env
         - name: CONFD_PREFIX_KEY
           value: /minio
-        - name: MINIO_ACCESS_KEY_ID
+        - name: MINIO_ACCESS_KEY
           value: minio_development
-        - name: MINIO_SECRET_ACCESS_KEY
+        - name: MINIO_SECRET_KEY
           value: minio_development
         - name: MINIO_DISKS_0
           value: disk0
@@ -132,7 +132,8 @@ components:
           protocol: tcp
           exposure: internal
 events:
-  postStart: []
+  postStart:
+    - createbucket
     
 commands:
   - id: createbucket
