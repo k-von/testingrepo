@@ -128,12 +128,9 @@ components:
           protocol: tcp
           exposure: internal
 events:
-  postStart: []
+  postStart: 
+    - createbucket
 commands:
-  - id: justtesting
-    exec:
-      commandLine: /bin/bash -c 'echo "Just Testing"'
-      component: app-server
   - id: createbucket
     exec:
       commandLine: |
