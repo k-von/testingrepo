@@ -77,6 +77,10 @@ components:
           value: secure-bucket
         - name: MC_CONFIG_DIR
           value: /tmp
+        - name: MINIO_HTTP_TRACE
+          value: /dev/stdout
+        - name: LOGSPOUT
+          value: ignore
   - name: es
     container:
       image: docker.elastic.co/elasticsearch/elasticsearch:7.16.2
