@@ -57,7 +57,7 @@ components:
         - server
         - /data/disk0
       endpoints:
-        - exposure: internal
+        - exposure: public
           name: minio
           targetPort: 9000
       env:
