@@ -12,7 +12,7 @@ components:
   - name: app-server
     container:
       #image: registry.redhat.io/devspaces/udi-rhel8:3.9
-      image: ruby-dev:ruby-3.1
+      image: image-registry.openshift-image-registry.svc.cluster.local:5000/openshift/ruby-dev:ruby-3.1
       memoryLimit: "2Gi"
       memoryRequest: "1Gi"
       cpuLimit: "1"
