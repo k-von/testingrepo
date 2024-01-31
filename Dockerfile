@@ -60,7 +60,7 @@ RUN useradd -u 1000 -G wheel,root,rvm -d /home/user --shell /bin/bash -m user &&
     echo "export PS1='\W \`git branch --show-current 2>/dev/null | sed -r -e \"s@^(.+)@\(\1\) @\"\`$ '" >> "${HOME}"/.bashrc && \
     # Change permissions to let any arbitrary user
     mkdir -p /projects && \
-    for f in "${HOME}" "/etc/passwd" "/etc/group" "/projects" "/usr/share/gems" "/usr/local/bin" "/usr/bin"; do \
+    for f in "${HOME}" "/etc/passwd" "/etc/group" "/projects" "/usr/share/gems" "/usr/local/bin" "/usr/bin" "/usr/lib64"; do \
         echo "Changing permissions on ${f}" && chgrp -R 0 ${f} && \
         chmod -R g+rwX ${f}; \
     done && \
