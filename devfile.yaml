@@ -12,7 +12,7 @@ components:
   - name: app-server
     container:
       #image: registry.redhat.io/devspaces/udi-rhel8:3.9
-      image: quay.io/kayvon77/ruby-dev:1.0
+      image: ruby-dev:ruby-3.1
       memoryLimit: "2Gi"
       memoryRequest: "1Gi"
       cpuLimit: "1"
@@ -28,7 +28,7 @@ components:
         - name: PROJECTROOT
           value: $(PROJECTS_ROOT)
         - name: DATABASE_URL
-          value: mysql2://root:example@db:3306
+          value: mysql2://root:example@127.0.0.1:3306
         - name: MEMCACHED_HOST
           value: memcached
         - name: ELASTICSEARCH_URL
