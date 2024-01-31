@@ -43,7 +43,7 @@ RUN RUBY_PKGS="ruby-devel rubygem-rake rubygem-bundler" && \
     dnf clean all && \
     rm -rf /var/cache/dnf/*
 
-RUN gem install rvm ruby-lsp && \
+RUN gem install rvm ruby-lsp json debug && \
     sudo gpg2 --keyserver hkp://keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB && \ 
     curl -sSL https://get.rvm.io | sudo bash -s stable
 
@@ -60,7 +60,7 @@ RUN useradd -u 1000 -G wheel,root,rvm -d /home/user --shell /bin/bash -m user &&
     echo "export PS1='\W \`git branch --show-current 2>/dev/null | sed -r -e \"s@^(.+)@\(\1\) @\"\`$ '" >> "${HOME}"/.bashrc && \
     # Change permissions to let any arbitrary user
     mkdir -p /projects && \
-    for f in "${HOME}" "/etc/passwd" "/etc/group" "/projects" "/usr/share/gems" "/usr/local/bin"; do \
+    for f in "${HOME}" "/etc/passwd" "/etc/group" "/projects" "/usr/share/gems" "/usr/local/bin" "/usr/bin"; do \
         echo "Changing permissions on ${f}" && chgrp -R 0 ${f} && \
         chmod -R g+rwX ${f}; \
     done && \
