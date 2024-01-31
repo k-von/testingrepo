@@ -7,7 +7,7 @@ projects:
       remotes:
         origin: "git@github.com:la-county-isd/sams-cola.git"
       checkoutFrom:
-        revision: main
+        revision: openshift
 components:
   - name: app-server
     container:
