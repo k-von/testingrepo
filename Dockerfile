@@ -27,7 +27,9 @@ RUN RUBY_PKGS="ruby-devel rubygem-rake rubygem-bundler" && \
     GEOS_PKGS="geos-devel libffi-devel proj-devel" && \
     OTHER_PKGS="libcurl-devel rubygem-mysql2 mariadb-connector-c mariadb-connector-c-devel rubygem-psych libyaml-devel libtool readline sudo" && \
     dnf update -y && \
-    dnf -y --disableplugin=subscription-manager module enable ruby:2.6 && \
+    dnf -y --disableplugin=subscription-manager module disable ruby:2.6 && \
+    dnf -y --disableplugin=subscription-manager module reset ruby:2.6 && \
+    dnf -y --disableplugin=subscription-manager module enable ruby:3.1 && \
     dnf -y --disableplugin=subscription-manager module enable container-tools && \
     dnf -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm && \
     dnf -y --disableplugin=subscription-manager --setopt=tsflags=nodocs install \
@@ -41,7 +43,7 @@ RUN RUBY_PKGS="ruby-devel rubygem-rake rubygem-bundler" && \
     dnf clean all && \
     rm -rf /var/cache/dnf/*
 
-RUN gem install rvm && \
+RUN gem install rvm ruby-lsp && \
     sudo gpg2 --keyserver hkp://keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB && \ 
     curl -sSL https://get.rvm.io | sudo bash -s stable
 
@@ -58,10 +60,11 @@ RUN useradd -u 1000 -G wheel,root,rvm -d /home/user --shell /bin/bash -m user &&
     echo "export PS1='\W \`git branch --show-current 2>/dev/null | sed -r -e \"s@^(.+)@\(\1\) @\"\`$ '" >> "${HOME}"/.bashrc && \
     # Change permissions to let any arbitrary user
     mkdir -p /projects && \
-    for f in "${HOME}" "/etc/passwd" "/etc/group" "/projects" "/usr/share/gems"; do \
+    for f in "${HOME}" "/etc/passwd" "/etc/group" "/projects" "/usr/share/gems" "/usr/local/bin"; do \
         echo "Changing permissions on ${f}" && chgrp -R 0 ${f} && \
         chmod -R g+rwX ${f}; \
     done && \
+
     # Generate passwd.template
     cat /etc/passwd | \
     sed s#user:x.*#user:x:\${USER_ID}:\${GROUP_ID}::\${HOME}:/bin/bash#g \
