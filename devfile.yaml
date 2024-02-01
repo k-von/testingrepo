@@ -150,7 +150,7 @@ commands:
       workingDir: /tmp
   - id: install-github-copilot
     exec:
-      commandLine: code-oss --install-extension ${PROJECT_SOURCE}/.vscode/GitHub.copilot-1.143.601.vsix
+      commandLine: PATH=${PATH}:/checode/checode-linux-libc/bin/remote-cli code-oss --install-extension ${PROJECT_SOURCE}/.vscode/GitHub.copilot-1.143.601.vsix
       component: app-server
       label: Install Github Copilot for VSX file
       workingDir: /projects/sams-cola
