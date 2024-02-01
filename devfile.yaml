@@ -132,7 +132,6 @@ components:
 events:
   postStart:
     - createbucket
-    - install-github-copilot
     
 commands:
   - id: createbucket
@@ -151,10 +150,12 @@ commands:
       workingDir: /tmp
   - id: install-github-copilot
     exec:
-      commandLine: /checode/checode-linux-libc/bin/remote-cli/code-oss --install-extension /projects/sams-cola/.vscode/GitHub.copilot-1.143.601.vsix
+      commandLine: code-oss --install-extension ${PROJECT_SOURCE}/.vscode/GitHub.copilot-1.143.601.vsix
       component: app-server
       label: Install Github Copilot for VSX file
       workingDir: /projects/sams-cola
+      group:
+        kind: build
   - id: build
     exec:
       commandLine: /bin/bash --login -c 'rvm use system && ${PROJECT_SOURCE}/bin/bundle install --path vendor/bundle && npm i'
@@ -163,16 +164,6 @@ commands:
       group:
         kind: build
         isDefault: true
-  - id: build-dev-tools
-    exec:
-      commandLine: |
-        /bin/bash --login -c 'cd ${PROJECT_SOURCE}/dev-tools && rvm use 3.1.3 && bundle install'
-
-      component: app-server
-      group:
-        kind: build
-      label: Building dev-tools related gems
-      workingDir: ${PROJECTS_ROOT}/sams-cola/dev-tools
   - id: delayed-jobs-server
     exec:
       commandLine: |
