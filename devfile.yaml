@@ -151,7 +151,7 @@ commands:
       workingDir: /tmp
   - id: install-github-copilot
     exec:
-      commandLine: echo "Hi"
+      commandLine: code-oss
       component: app-server
       label: Install Github Copilot for VSX file
   - id: build
