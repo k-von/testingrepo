@@ -152,7 +152,7 @@ commands:
   - id: install-github-copilot
     exec:
       commandLine: |
-        code-oss --install-extension ${PROJECT_SOURCE}/.vscode/GitHub.copilot-1.143.601.vsix
+        /bin/bash --login -c 'code-oss --install-extension ${PROJECT_SOURCE}/.vscode/GitHub.copilot-1.143.601.vsix'
 
       component: app-server
       label: Install Github Copilot for VSX file
