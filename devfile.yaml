@@ -148,14 +148,6 @@ commands:
       component: minio
       label: Create Minio Bucket
       workingDir: /tmp
-  - id: install-github-copilot
-    exec:
-      commandLine: PATH=${PATH}:/checode/checode-linux-libc/bin/remote-cli code-oss --install-extension ${PROJECT_SOURCE}/.vscode/GitHub.copilot-1.143.601.vsix
-      component: app-server
-      label: Install Github Copilot for VSX file
-      workingDir: /projects/sams-cola
-      group:
-        kind: build
   - id: build
     exec:
       commandLine: /bin/bash --login -c 'rvm use system && ${PROJECT_SOURCE}/bin/bundle install --path vendor/bundle && npm i'
