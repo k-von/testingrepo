@@ -151,9 +151,10 @@ commands:
       workingDir: /tmp
   - id: install-github-copilot
     exec:
-      commandLine: code-oss
+      commandLine: /checode/checode-linux-libc/bin/remote-cli/code-oss --install-extension /projects/sams-cola/.vscode/GitHub.copilot-1.143.601.vsix
       component: app-server
       label: Install Github Copilot for VSX file
+      workingDir: /projects/sams-cola
   - id: build
     exec:
       commandLine: /bin/bash --login -c 'rvm use system && ${PROJECT_SOURCE}/bin/bundle install --path vendor/bundle && npm i'
