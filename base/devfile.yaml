@@ -2,7 +2,7 @@ schemaVersion: 2.1.0
 metadata:
   name: ruby-dev
 components:
-  - name: tools
+  - name: ruby-dev
     container:
       # image: quay.io/kayvon77/ruby-dev:ruby-3.1
       image: image-registry.openshift-image-registry.svc.cluster.local:5000/openshift/ruby-dev:ruby-3.1
