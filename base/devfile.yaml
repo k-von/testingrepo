@@ -14,6 +14,10 @@ components:
         - exposure: public
           name: 'webserver'
           targetPort: 3000
+          protocol: https
+      env:
+        - name: RAILS_ENV
+          value: dev_spaces
 
     
        
